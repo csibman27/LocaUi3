@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">LocaUi</string>
+    <string name="app_name">WebsiteMarks</string>
+    <string name="addText">WebsiteMarks</string>
 </resources>
