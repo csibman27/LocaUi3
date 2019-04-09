@@ -3,7 +3,6 @@ package com.example.locaui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.TextView
 import com.example.locaui.R
 import com.example.locaui.main.MainApp
 import com.example.locaui.model.WebMarkModel
@@ -24,8 +23,8 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
         app = application as MainApp
 
 
-        val myTxt = findViewById<TextView>(R.id.textView1)
-        myTxt.text = "   List of Websites is currently empty"
+       // val myTxt = findViewById<TextView>(R.id.textView1)
+       // myTxt.text = "   List of Websites is currently empty"
 
 
 
