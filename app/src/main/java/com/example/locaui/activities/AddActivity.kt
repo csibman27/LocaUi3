@@ -3,14 +3,12 @@ package com.example.locaui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
 import android.widget.Button
-import android.widget.TextView
 import com.example.locaui.R
 import com.example.locaui.main.MainApp
 import com.example.locaui.model.WebMarkModel
 import kotlinx.android.synthetic.main.activity_add.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.cardview.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import java.util.*
@@ -46,8 +44,8 @@ class AddActivity : AppCompatActivity(), AnkoLogger {
 
 
         }
-        class WebMarkAdapter constructor(private var webMarks: List<WebMarkModel>): RecyclerView.Adapter<WebMarkAdapter.MainHolder>() {
+        //class WebMarkAdapter constructor(private var webMarks: List<WebMarkModel>): RecyclerView.Adapter<WebMarkAdapter.MainHolder>() {
 
         }
     }
-}
+

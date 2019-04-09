@@ -6,6 +6,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.MainActivity">
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="398dp"
+            android:layout_height="345dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/btnBackAdd" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.666" app:layout_constraintVertical_bias="1.0"/>
     <Button
             android:text="Add Website"
             android:layout_width="156dp"
@@ -17,40 +24,4 @@
             android:layout_marginTop="48dp"
             app:layout_constraintTop_toTopOf="parent"
     />
-    <TextView
-            android:text="List of Websites"
-            android:layout_width="369dp"
-            android:layout_height="222dp"
-            android:id="@+id/textView1"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintTop_toBottomOf="parent"/>
-    <Button
-            android:text="Delete"
-            android:layout_width="157dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/fDeleteBtn"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.504"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/fAddBtn"/>
-    <Button
-            android:text="Edit"
-            android:layout_width="156dp"
-            android:layout_height="45dp"
-            android:id="@+id/fEditBtn" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/fDeleteBtn"/>
-    <Button
-            android:text="List All"
-            android:layout_width="158dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/fListBtn" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.502"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/fEditBtn"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="@+id/textView1"
-            app:layout_constraintVertical_bias="0.015"/>
 </android.support.constraint.ConstraintLayout>
