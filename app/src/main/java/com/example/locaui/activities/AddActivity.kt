@@ -44,7 +44,7 @@ class AddActivity : AppCompatActivity(), AnkoLogger {
 //        pass the values to RvAdapter
         val rvAdapter = WebMarkAdapter(webMarks)
 //        set the recyclerView to the adapter
-        view.adapter = rvAdapter
+        view.adapter = rvAdapter lol
 
 
         val button2 = findViewById<Button>(R.id.btnBackAdd)
