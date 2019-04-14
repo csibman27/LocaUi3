@@ -13,7 +13,7 @@ class MainApp: Application(), AnkoLogger {
         super.onCreate()
         info("this is webmarks")
         webMarks.run {
-            add(WebMarkModel("Supergamez","www.sg.hu"))
+            add(WebMarkModel("Super","www.sg.hu"))
         }
     }
 }

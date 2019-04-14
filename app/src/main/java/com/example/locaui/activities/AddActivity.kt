@@ -36,15 +36,15 @@ class AddActivity : AppCompatActivity(), AnkoLogger {
         val view = findViewById<RecyclerView>(R.id.myTxt)
         view.layoutManager = LinearLayoutManager(this,LinearLayout.VERTICAL, false)
 
-        val myAdapter = WebMarkAdapter(WebMarkModel)
+
         val webMarks = ArrayList<WebMarkModel>()
-        webMarks.add(WebMarkModel(webName = "lala",webUrl = "www.sg.hu"))
+        webMarks.add(WebMarkModel(webName = "supergamez",webUrl = "www.sg.hu"))
 
 
 //        pass the values to RvAdapter
-        val rvAdapter = WebMarkAdapter(webMarks)
+        val rvAdapter = WMAdapter(webMarks)
 //        set the recyclerView to the adapter
-        view.adapter = rvAdapter lol
+        view.adapter = rvAdapter
 
 
         val button2 = findViewById<Button>(R.id.btnBackAdd)
@@ -65,29 +65,7 @@ class AddActivity : AppCompatActivity(), AnkoLogger {
 
 
         }
-        class WebMarkAdapter constructor(private var webMarks: List<WebMarkModel>) :
-            RecyclerView.Adapter<WebMarkAdapter.MainHolder>() {
 
-
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-                return MainHolder(LayoutInflater.from(parent.context).inflate(R.layout.cardview, parent, false))
-            }
-
-            override fun onBindViewHolder(holder: MainHolder, position: Int) {
-                val webmark = webMarks[holder.adapterPosition]
-                holder.bind(webmark)
-            }
-
-            override fun getItemCount(): Int = webMarks.size
-
-            inner class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-                fun bind(webmark: WebMarkModel) {
-                    webMark.webName = itemView.addText1.toString()
-                    webMark.webUrl = itemView.editText2.toString()
-                }
-            }
-        }
     }
 }
 
