@@ -43,8 +43,8 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                     }
 
                 }
-        btnBack.setOnClickListener {
-                    val intent = Intent(this, MainActivity :: class.java)
+                btnBack.setOnClickListener {
+                    val intent = Intent(this, ListView :: class.java)
                     startActivity(intent)
                 }
 
