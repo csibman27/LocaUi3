@@ -1,14 +1,13 @@
 package com.example.locaui.activities
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.locaui.R
 import com.example.locaui.main.MainApp
 import com.example.locaui.model.WebMarkModel
-import kotlinx.android.synthetic.main.activity_listview.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.cardview.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import java.util.*
@@ -33,14 +32,20 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
 
             //Toast.makeText(this, "Entered to Add Websites", Toast.LENGTH_LONG).show();
                 btnAdd.setOnClickListener {
-                    webMark.webName = textView1.text.toString()
+                    webMark.webName = webTitle.text.toString()
+                    webMark.webUrl = urlScroll.text.toString()
                     if (webMark.webName.isNotEmpty()) {
                         app!!.webMarks.add(webMark.copy())
-                        info("Add Button pressed: $textView1")
+                        info("Add Button pressed: $webTitle")
                         app!!.webMarks.forEach { info("Add button pressed: ${it}") }
                         setResult(AppCompatActivity.RESULT_OK)
                         finish()
                     }
+
+                }
+        btnBack.setOnClickListener {
+                    val intent = Intent(this, MainActivity :: class.java)
+                    startActivity(intent)
                 }
 
 

@@ -1,22 +1,19 @@
 package com.example.locaui.activities
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
 import com.example.locaui.R
 import com.example.locaui.main.MainApp
+import kotlinx.android.synthetic.main.activity_listview.*
+import kotlinx.android.synthetic.main.cardview.view.*
 import com.example.locaui.model.WebMarkModel
-
-import kotlinx.android.synthetic.main.activity_listview.*
-import kotlinx.android.synthetic.main.activity_listview.*
 import org.jetbrains.anko.startActivityForResult
 
 class ListView : AppCompatActivity() {
 
-    var webMark = WebMarkModel()
     lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,15 +23,10 @@ class ListView : AppCompatActivity() {
         toolbarMain.title = title
         setSupportActionBar(toolbarMain)
         val layoutManager = LinearLayoutManager(this)
-        val view = findViewById<RecyclerView>(R.id.myRecyclerView)
-
-        view.layoutManager = layoutManager
-        view.adapter = WMAdapter(app.webMarks)
+        myRecyclerView.layoutManager = layoutManager
+        myRecyclerView.adapter = WMAdapter(app.webMarks)
 
     }
-    //val webMarks = ArrayList<WebMarkModel>()
-    //webMarks.add(WebMarkModel(webName = "supergamez", webUrl = "www.sg.hu"))
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
@@ -50,7 +42,6 @@ class ListView : AppCompatActivity() {
 
 
 }
-
 
 //inner adapter class which is used to show the cardview
 
@@ -73,6 +64,8 @@ class WMAdapter constructor(private var webMarks: List<WebMarkModel>) :
 
         fun bind(webmark: WebMarkModel) {
 
+            itemView.webTitle.text = webmark.webName
+            itemView.urlScroll.text = webmark.webUrl
 
         }
     }

@@ -1,4 +1,4 @@
-package com.example.locaui
+package com.example.locaui.model
 
 class WebMarks {
 

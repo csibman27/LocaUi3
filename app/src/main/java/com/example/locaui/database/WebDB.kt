@@ -2,7 +2,7 @@ package com.example.locaui.database
 
 import android.content.*
 import android.database.sqlite.*
-import com.example.locaui.WebMarks
+import com.example.locaui.model.WebMarks
 import java.util.*
 
 class WebDB(context: Context) : SQLiteOpenHelper(context, dbName, null, 1) {
