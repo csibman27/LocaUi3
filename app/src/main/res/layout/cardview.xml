@@ -27,7 +27,7 @@
                 android:clickable="true"
                 android:foreground="@android:drawable/list_selector_background"/>
         <TextView
-                android:id="@+id/btnDelete"
+                android:id="@+id/btnDeleteC"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_alignParentRight="true"
@@ -35,11 +35,11 @@
                 android:padding="5dp" />
 
         <TextView
-                android:id="@+id/btnEdit"
+                android:id="@+id/btnEditC"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginRight="2dp"
-                android:layout_toLeftOf="@+id/btnDelete"
+                android:layout_toLeftOf="@+id/btnDeleteC"
                 android:drawableLeft="@android:drawable/ic_menu_edit"
                 android:padding="5dp" />
 

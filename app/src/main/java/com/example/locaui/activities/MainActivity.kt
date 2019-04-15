@@ -3,10 +3,12 @@ package com.example.locaui.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import com.example.locaui.R
 import com.example.locaui.main.MainApp
 import com.example.locaui.model.WebMarkModel
+import com.example.locaui.model.WebMarks
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -43,6 +45,18 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                     }
 
                 }
+                fun clickDelete(webMarks: WebMarks) {
+                    val alertDialogBuilder by lazy { AlertDialog.Builder(this) }
+                    alertDialogBuilder.setTitle("Delete")
+                    alertDialogBuilder.setMessage("Are you sure you want to delete this ${webMarks.webName}?")
+
+                }
+
+                //btnDeleteC.setOnClickListener {
+                    //webMark.webName.isNotEmpty() {
+                    //}
+                //}
+
                 btnBack.setOnClickListener {
                     val intent = Intent(this, ListView :: class.java)
                     startActivity(intent)

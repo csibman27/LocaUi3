@@ -15,7 +15,8 @@ import com.example.locaui.model.WebMarkModel
 import org.jetbrains.anko.startActivityForResult
 import android.support.v4.content.ContextCompat.startActivity
 import android.R
-
+import android.widget.Button
+import com.example.locaui.model.WebMarks
 
 
 class ListView : AppCompatActivity() {
@@ -67,9 +68,16 @@ class WMAdapter constructor(private var webMarks: List<WebMarkModel>) :
 
     override fun getItemCount(): Int = webMarks.size
 
-    
+    fun clearData() {
+        webMarks = ArrayList()
+        notifyDataSetChanged()
+    }
+
+    fun remove(webMarks: List<WebMarkModel>) {
+    }
 
     inner class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
 
         fun bind(webmark: WebMarkModel) {
 
