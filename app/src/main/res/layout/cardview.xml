@@ -23,6 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/webTitle"
+                android:autoLink="web"
                 android:clickable="true"
                 android:foreground="@android:drawable/list_selector_background"/>
         <TextView

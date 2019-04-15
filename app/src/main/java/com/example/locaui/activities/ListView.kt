@@ -67,15 +67,14 @@ class WMAdapter constructor(private var webMarks: List<WebMarkModel>) :
 
     override fun getItemCount(): Int = webMarks.size
 
+    
+
     inner class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(webmark: WebMarkModel) {
 
             itemView.webTitle.text = webmark.webName
-            //itemView.urlScroll.text = Intent(Intent.ACTION_VIEW, Uri.parse(webmark.webUrl)).action
-            itemView.setOnClickListener {
-                itemView.urlScroll.text = webmark.webUrl
-            }
+            itemView.urlScroll.text = webmark.webUrl
 
 
 
