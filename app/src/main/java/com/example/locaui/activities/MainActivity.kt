@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
        // myTxt.text = "   List of Websites is currently empty"
 
 
-
             //Toast.makeText(this, "Entered to Add Websites", Toast.LENGTH_LONG).show();
                 btnAdd.setOnClickListener {
                     webMark.webName = webTitle.text.toString()

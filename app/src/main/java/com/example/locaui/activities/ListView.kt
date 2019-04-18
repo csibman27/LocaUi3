@@ -74,6 +74,7 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
             removeItem(position)
         }
         holder.itemView.btnEditC.setOnClickListener {
+            editItem(webmark)
 
         }
     }
@@ -85,12 +86,14 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, webMarks.size)
     }
-    fun editItem(position: Int) {
-        itemCount
-        webMarks.listIterator(position)
-
-
+    fun editItem(webmark: WebMarkModel) {
+       var foundWebMarks: WebMarkModel? = webMarks.find { p-> p.webName == webmark.webName }
+        if (foundWebMarks != null) {
+            foundWebMarks.webName = webmark.webName
+            foundWebMarks.webUrl = webmark.webUrl
+        }
     }
+
 
     fun clearItem() {
         webMarks = ArrayList()
