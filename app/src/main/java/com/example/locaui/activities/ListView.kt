@@ -15,7 +15,11 @@ import com.example.locaui.model.WebMarkModel
 import org.jetbrains.anko.startActivityForResult
 import android.support.v4.content.ContextCompat.startActivity
 import android.R
+import android.icu.text.AlphabeticIndex
+import android.support.v7.view.menu.MenuView
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import com.example.locaui.model.WebMarks
 
 
@@ -52,29 +56,48 @@ class ListView : AppCompatActivity() {
 
 //inner adapter class which is used to show the cardview
 
-class WMAdapter constructor(private var webMarks: List<WebMarkModel>) :
+class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
     RecyclerView.Adapter<WMAdapter.MainHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        return MainHolder(LayoutInflater.from(parent.context).inflate(com.example.locaui.R.layout.cardview, parent, false))
+        val view: View = (LayoutInflater.from(parent.context).inflate(com.example.locaui.R.layout.cardview, parent, false))
+        return MainHolder(view)
+
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val webmark = webMarks[holder.adapterPosition]
         holder.bind(webmark)
        //  make onBindViewHolder(CourseViewHolder CourseViewHolder, final int i)
+        holder.itemView.btnDeleteC.setOnClickListener {
+            removeItem(position)
+        }
+        holder.itemView.btnEditC.setOnClickListener {
+
+        }
     }
 
     override fun getItemCount(): Int = webMarks.size
 
-    fun clearData() {
+    fun removeItem(position: Int) {
+        webMarks.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, webMarks.size)
+    }
+    fun editItem(position: Int) {
+        itemCount
+        webMarks.listIterator(position)
+
+
+    }
+
+    fun clearItem() {
         webMarks = ArrayList()
         notifyDataSetChanged()
     }
 
-    fun remove(webMarks: List<WebMarkModel>) {
-    }
+
 
     inner class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

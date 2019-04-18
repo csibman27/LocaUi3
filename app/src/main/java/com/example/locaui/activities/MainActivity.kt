@@ -27,6 +27,11 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
         app = application as MainApp
 
 
+        for (i in 1..50) {
+          //  webMarks.add("Webmarks # $i")
+        }
+
+
        // val myTxt = findViewById<TextView>(R.id.textView1)
        // myTxt.text = "   List of Websites is currently empty"
 
@@ -46,16 +51,12 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
 
                 }
                 fun clickDelete(webMarks: WebMarks) {
-                    val alertDialogBuilder by lazy { AlertDialog.Builder(this) }
+                    val alertDialogBuilder by lazy { return@lazy AlertDialog.Builder(this) }
                     alertDialogBuilder.setTitle("Delete")
                     alertDialogBuilder.setMessage("Are you sure you want to delete this ${webMarks.webName}?")
 
                 }
 
-                //btnDeleteC.setOnClickListener {
-                    //webMark.webName.isNotEmpty() {
-                    //}
-                //}
 
                 btnBack.setOnClickListener {
                     val intent = Intent(this, ListView :: class.java)

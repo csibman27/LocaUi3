@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/main_add"
-        android:icon="@android:drawable/ic_input_add"
-        android:title="@string/add"
-        app:showAsAction="never"/>
+            android:id="@+id/main_add"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="@string/add"
+            app:showAsAction="never|always" android:enabled="true" android:visible="true"/>
 
-        <item
-                android:id="@+id/main_about"
-                android:icon="@android:drawable/ic_dialog_info"
-                android:title="@string/about"
-                app:showAsAction="never"/>
+    <item
+            android:id="@+id/main_about"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="@string/about"
+            app:showAsAction="never|always" android:visible="true" android:enabled="true"/>
 
 </menu>
