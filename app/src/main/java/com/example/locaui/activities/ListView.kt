@@ -18,6 +18,7 @@ import android.R
 import android.icu.text.AlphabeticIndex
 import android.support.v7.view.menu.MenuView
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.locaui.model.WebMarks
@@ -74,7 +75,12 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
             removeItem(position)
         }
         holder.itemView.btnEditC.setOnClickListener {
-            editItem(webmark)
+            val tar1 = webmark.webName.toString()
+            val idc = webMarks.indexOf(webmark)
+            if (idc.equals(webmark)) {
+                
+            }
+
 
         }
     }
