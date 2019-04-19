@@ -1,17 +1,17 @@
 package com.example.locaui.activities
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
 import com.example.locaui.main.MainApp
-import com.example.locaui.model.WebMarkModel
 import kotlinx.android.synthetic.main.activity_listview.*
 import kotlinx.android.synthetic.main.cardview_det.view.*
+import com.example.locaui.model.WebMarkModel
 import org.jetbrains.anko.startActivityForResult
+
 
 
 class ListView : AppCompatActivity() {
@@ -40,7 +40,6 @@ class ListView : AppCompatActivity() {
             com.example.locaui.R.id.main_add -> startActivityForResult<MainActivity>(0)
         }
         return super.onOptionsItemSelected(item)
-
     }
 
 
@@ -50,7 +49,6 @@ class ListView : AppCompatActivity() {
 
 class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
     RecyclerView.Adapter<WMAdapter.MainHolder>() {
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -67,40 +65,26 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
             removeItem(position)
         }
         holder.itemView.btnEditC.setOnClickListener {
-                a->
-                var intent = Intent(a.context, MainActivity::class.java)
-                intent.putExtra("webTitle", webmark.webName)
-                intent.putExtra("urlScroll", webmark.webUrl)
-                a.context.startActivity(intent)
-            }
-            //val tar1 = webmark.webName.toString()
-            //val idc = webMarks.indexOf(webmark)
-            //if (idc.equals(webmark)) {
-                //webMarks.get(position)
-
+             v ->
+                val intent = Intent(v.context, MainActivity::class.java)
+                intent.putExtra("webTitle", webMarks[position].webName)
+                v.context.startActivity(intent)
+            holder.itemView.webTitle.setText("Example")
         }
-
-    fun getItem(position: Int): WebMarkModel {
-
-        return webMarks[position]
     }
 
     override fun getItemCount(): Int = webMarks.size
 
     fun removeItem(position: Int) {
-
         webMarks.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, webMarks.size)
     }
     fun editItem(webmark: WebMarkModel) {
-       var foundWebMarks: WebMarkModel? = webMarks.find { p-> p.webName == webmark.webName }
-        if (foundWebMarks != null) {
-            foundWebMarks.webName = webmark.webName
-            foundWebMarks.webUrl = webmark.webUrl
-        }
+
 
     }
+
 
     fun clearItem() {
         webMarks = ArrayList()
