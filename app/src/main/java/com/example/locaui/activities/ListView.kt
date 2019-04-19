@@ -1,13 +1,12 @@
 package com.example.locaui.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
-import com.example.locaui.R
 import com.example.locaui.main.MainApp
 import com.example.locaui.model.WebMarkModel
 import kotlinx.android.synthetic.main.activity_listview.*
@@ -89,6 +88,7 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
     override fun getItemCount(): Int = webMarks.size
 
     fun removeItem(position: Int) {
+
         webMarks.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, webMarks.size)
@@ -99,8 +99,8 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
             foundWebMarks.webName = webmark.webName
             foundWebMarks.webUrl = webmark.webUrl
         }
-    }
 
+    }
 
     fun clearItem() {
         webMarks = ArrayList()

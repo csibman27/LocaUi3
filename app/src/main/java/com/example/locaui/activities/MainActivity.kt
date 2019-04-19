@@ -1,6 +1,7 @@
 package com.example.locaui.activities
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
     var webMark = WebMarkModel()
     var app: MainApp? = null
     val webMarks = ArrayList<WebMarkModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
