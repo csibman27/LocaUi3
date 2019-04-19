@@ -28,42 +28,44 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
 
 
         for (i in 1..50) {
-          //  webMarks.add("Webmarks # $i")
+            //  webMarks.add("Webmarks # $i")
         }
 
 
-       // val myTxt = findViewById<TextView>(R.id.textView1)
-       // myTxt.text = "   List of Websites is currently empty"
+        // val myTxt = findViewById<TextView>(R.id.textView1)
+        // myTxt.text = "   List of Websites is currently empty"
 
 
-            //Toast.makeText(this, "Entered to Add Websites", Toast.LENGTH_LONG).show();
-                btnAdd.setOnClickListener {
-                    webMark.webName = webTitle.text.toString()
-                    webMark.webUrl = urlScroll.text.toString()
-                    if (webMark.webName.isNotEmpty()) {
-                        app!!.webMarks.add(webMark.copy())
-                        info("Add Button pressed: $webTitle")
-                        app!!.webMarks.forEach { info("Add button pressed: ${it}") }
-                        setResult(AppCompatActivity.RESULT_OK)
-                        finish()
-                    }
-
-                }
-                fun clickDelete(webMarks: WebMarks) {
-                    val alertDialogBuilder by lazy { return@lazy AlertDialog.Builder(this) }
-                    alertDialogBuilder.setTitle("Delete")
-                    alertDialogBuilder.setMessage("Are you sure you want to delete this ${webMarks.webName}?")
-
-                }
-
-
-                btnBack.setOnClickListener {
-                    val intent = Intent(this, ListView :: class.java)
-                    startActivity(intent)
-                }
-
+        //Toast.makeText(this, "Entered to Add Websites", Toast.LENGTH_LONG).show();
+        btnAdd.setOnClickListener {
+            webMark.webName = webTitle.text.toString()
+            webMark.webUrl = urlScroll.text.toString()
+            if (webMark.webName.isNotEmpty()) {
+                app!!.webMarks.add(webMark.copy())
+                info("Add Button pressed: $webTitle")
+                app!!.webMarks.forEach { info("Add button pressed: ${it}") }
+                setResult(AppCompatActivity.RESULT_OK)
+                finish()
+            }
 
         }
+        fun clickDelete(webMarks: WebMarks) {
+            val alertDialogBuilder by lazy { return@lazy AlertDialog.Builder(this) }
+            alertDialogBuilder.setTitle("Delete")
+            alertDialogBuilder.setMessage("Are you sure you want to delete this ${webMarks.webName}?")
+
+        }
+
+
+        btnBack.setOnClickListener {
+            val intent = Intent(this, ListView::class.java)
+            startActivity(intent)
+        }
+
+
+
     }
+    }
+
 
 
