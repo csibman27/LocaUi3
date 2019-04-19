@@ -12,5 +12,10 @@
             android:icon="@android:drawable/ic_dialog_info"
             android:title="@string/about"
             app:showAsAction="never|always" android:visible="true" android:enabled="true"/>
+    <item
+            android:id="@+id/refresh"
+            android:icon="@android:drawable/ic_menu_revert"
+            android:title="@string/refresh"
+            app:showAsAction="never|always" android:enabled="true" android:visible="true"/>
 
 </menu>
