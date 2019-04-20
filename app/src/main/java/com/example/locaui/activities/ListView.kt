@@ -87,6 +87,7 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
 
             Log.d("t1", "message ${webmark} ")
             Log.d("t2", "message2 " + getItem(position))
+            Log.d("t2", "message2 " + getItem(position))
 
 
         }
