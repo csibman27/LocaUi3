@@ -23,11 +23,13 @@
         <Button
                 android:text="List"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/button"/>
+                android:layout_height="wrap_content"
+                android:id="@+id/btnList"/>
         <TextView
-                android:text="List of card views"
+                android:text="Store your favorite web pages in webmark application"
                 android:layout_width="match_parent"
-                android:layout_height="196dp" android:id="@+id/textView4"/>
+                android:layout_height="47dp"
+                android:id="@+id/listV1"/>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -37,7 +39,8 @@
             android:layout_height="wrap_content"
             android:scrollbars="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:itemCount="40" tools:listitem="@layout/recycler_view_item"/>
+            tools:itemCount="40"
+    />
 
 
 </android.support.design.widget.CoordinatorLayout>

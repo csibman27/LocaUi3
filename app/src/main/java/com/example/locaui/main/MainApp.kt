@@ -16,6 +16,7 @@ class MainApp: Application(), AnkoLogger {
         webMarks.run {
             add(WebMarkModel("Supergamez","www.sg.hu"))
             add(WebMarkModel("Example", "www.example.com"))
+            add(WebMarkModel("Facebook", "www.facebook.com"))
         }
 
     }

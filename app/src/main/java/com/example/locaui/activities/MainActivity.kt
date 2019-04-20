@@ -1,7 +1,6 @@
 package com.example.locaui.activities
 
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
@@ -13,7 +12,6 @@ import com.example.locaui.model.WebMarks
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity(), AnkoLogger {
@@ -30,13 +28,18 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
         app = application as MainApp
 
 
-
         // val myTxt = findViewById<TextView>(R.id.textView1)
         // myTxt.text = "   List of Websites is currently empty"
 
 
         //Toast.makeText(this, "Entered to Add Websites", Toast.LENGTH_LONG).show();
         btnAdd.setOnClickListener {
+            if(webTitle.text!!.isEmpty()) {
+                webTitle.error = "Please enter some title"
+            }
+            if(urlScroll.text!!.isEmpty()) {
+                urlScroll.error = "Please enter any url"
+            }
             webMark.webName = webTitle.text.toString()
             webMark.webUrl = urlScroll.text.toString()
             if (webMark.webName.isNotEmpty()) {
@@ -46,8 +49,8 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
             }
-
         }
+
         fun clickDelete(webMarks: WebMarks) {
             val alertDialogBuilder by lazy { return@lazy AlertDialog.Builder(this) }
             alertDialogBuilder.setTitle("Delete")
@@ -55,22 +58,11 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
 
         }
 
-
         btnBack.setOnClickListener {
             val intent = Intent(this, ListView::class.java)
             startActivity(intent)
         }
-        fun read() {
-            var list = ArrayList<WebMarkModel>()
-            for (index in 0..list.size -1) {
-                print(list[index])
-            }
-        }
-
-
 
     }
-    }
 
-
-
+}

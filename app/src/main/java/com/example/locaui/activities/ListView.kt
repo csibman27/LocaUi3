@@ -1,6 +1,5 @@
 package com.example.locaui.activities
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,20 +7,22 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.*
+import android.widget.EditText
 import com.example.locaui.R
 import com.example.locaui.main.MainApp
 import com.example.locaui.model.WebMarkModel
-import com.example.locaui.model.WebMarks
 import kotlinx.android.synthetic.main.activity_listview.*
 import kotlinx.android.synthetic.main.cardview_det.view.*
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 
 
 class ListView : AppCompatActivity(), AnkoLogger {
 
     lateinit var app: MainApp
+    var wTitle: EditText? = null
+    var wScroll: EditText? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,10 @@ class ListView : AppCompatActivity(), AnkoLogger {
         val layoutManager = LinearLayoutManager(this)
         myRecyclerView.layoutManager = layoutManager
         myRecyclerView.adapter = WMAdapter(app.webMarks)
+
+        wTitle = findViewById(R.id.webTitle)
+        wScroll = findViewById(R.id.urlScroll)
+
 
     }
 
@@ -47,8 +52,6 @@ class ListView : AppCompatActivity(), AnkoLogger {
         return super.onOptionsItemSelected(item)
 
     }
-
-
 }
 
 //inner adapter class which is used to show the cardview
@@ -77,25 +80,22 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
             val intent = Intent(k.context, MainActivity::class.java)
             intent.putExtra("webTitle", old.webName)
             intent.putExtra("urlScroll", old.webUrl)
-            val title = webmark.webName
-            val url = webmark.webUrl
-            var webmarknew  =WebMarkModel(webName = title, webUrl = url)
-            webmark = webmarknew
-            notifyDataSetChanged()
-            notifyItemChanged(position)
+            //val title = webmark.webName
+            //val url = webmark.webUrl
             k.context.startActivity(intent)
-            val webMarks = ArrayList<WebMarkModel>()
+
 
 
             Log.d("t1", "message ${webmark} ")
-            Log.d("t2", "message2 " + getItem(position))
             Log.d("t2", "message2 " + getItem(position))
 
 
         }
     }
 
-
+    private fun saveData() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     fun getItem(position: Int): WebMarkModel {
 
@@ -123,16 +123,7 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
            // else player
      //   }
    // }
-   fun <E> Iterable<E>.replace(old: E, new: E) = map { if (it == old) new else it }
-
-
-
-    fun clearItem() {
-        webMarks = ArrayList()
-        notifyDataSetChanged()
-    }
-
-
+   //fun <E> Iterable<E>.replace(old: E, new: E) = map { if (it == old) new else it }
 
     inner class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -148,4 +139,3 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
     }
 
 }
-
