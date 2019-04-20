@@ -29,10 +29,6 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
         app = application as MainApp
 
 
-        for (i in 1..50) {
-            //  webMarks.add("Webmarks # $i")
-        }
-
 
         // val myTxt = findViewById<TextView>(R.id.textView1)
         // myTxt.text = "   List of Websites is currently empty"

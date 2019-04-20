@@ -6,15 +6,20 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.*
+import com.example.locaui.R
 import com.example.locaui.main.MainApp
 import com.example.locaui.model.WebMarkModel
+import com.example.locaui.model.WebMarks
 import kotlinx.android.synthetic.main.activity_listview.*
 import kotlinx.android.synthetic.main.cardview_det.view.*
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 
 
-class ListView : AppCompatActivity() {
+class ListView : AppCompatActivity(), AnkoLogger {
 
     lateinit var app: MainApp
 
@@ -52,33 +57,42 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
     RecyclerView.Adapter<WMAdapter.MainHolder>() {
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        val view: View = (LayoutInflater.from(parent.context).inflate(com.example.locaui.R.layout.cardview_det, parent, false))
+        val view: View =
+            (LayoutInflater.from(parent.context).inflate(com.example.locaui.R.layout.cardview_det, parent, false))
         return MainHolder(view)
 
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val webmark = webMarks[holder.adapterPosition]
+        var webmark = webMarks[holder.adapterPosition]
         holder.bind(webmark)
-       //  make onBindViewHolder(CourseViewHolder CourseViewHolder, final int i)
+        //  make onBindViewHolder(CourseViewHolder CourseViewHolder, final int i)
         holder.itemView.btnDeleteC.setOnClickListener {
             removeItem(position)
         }
         holder.itemView.btnEditC.setOnClickListener {
-                a->
-                var intent = Intent(a.context, MainActivity::class.java)
-                intent.putExtra("webTitle", webmark.webName)
-                intent.putExtra("urlScroll", webmark.webUrl)
-                a.context.startActivity(intent)
-            }
-            //val tar1 = webmark.webName.toString()
-            //val idc = webMarks.indexOf(webmark)
-            //if (idc.equals(webmark)) {
-                //webMarks.get(position)
+           k->
+            val old = webmark.copy()
+            val intent = Intent(k.context, MainActivity::class.java)
+            intent.putExtra("webTitle", old.webName)
+            intent.putExtra("urlScroll", old.webUrl)
+            val title = webmark.webName
+            val url = webmark.webUrl
+            var webmarknew  =WebMarkModel(webName = title, webUrl = url)
+            webmark = webmarknew
+            notifyDataSetChanged()
+            notifyItemChanged(position)
+            k.context.startActivity(intent)
+
+            Log.d("t1", "message ${webmark} ")
+            Log.d("t2", "message2 " + getItem(position))
+
 
         }
+    }
+
+
 
     fun getItem(position: Int): WebMarkModel {
 
@@ -99,8 +113,16 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
             foundWebMarks.webName = webmark.webName
             foundWebMarks.webUrl = webmark.webUrl
         }
-
     }
+   // fun iterative(): ArrayList<WebMarkModel> {
+      //  return players.mapIndexed { i,  ->
+           // if (i == 2) player.copy(score = 100)
+           // else player
+     //   }
+   // }
+   fun <E> Iterable<E>.replace(old: E, new: E) = map { if (it == old) new else it }
+
+
 
     fun clearItem() {
         webMarks = ArrayList()
@@ -123,3 +145,4 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
     }
 
 }
+

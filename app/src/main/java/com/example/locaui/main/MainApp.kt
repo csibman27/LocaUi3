@@ -9,6 +9,7 @@ class MainApp: Application(), AnkoLogger {
 
     val webMarks = ArrayList<WebMarkModel>()
 
+
     override fun onCreate() {
         super.onCreate()
         info("this is webmarks")
@@ -16,5 +17,6 @@ class MainApp: Application(), AnkoLogger {
             add(WebMarkModel("Supergamez","www.sg.hu"))
             add(WebMarkModel("Example", "www.example.com"))
         }
+
     }
 }
