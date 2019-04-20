@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity(), AnkoLogger {
 
@@ -58,6 +59,12 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
         btnBack.setOnClickListener {
             val intent = Intent(this, ListView::class.java)
             startActivity(intent)
+        }
+        fun read() {
+            var list = ArrayList<WebMarkModel>()
+            for (index in 0..list.size -1) {
+                print(list[index])
+            }
         }
 
 

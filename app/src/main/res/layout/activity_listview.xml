@@ -20,13 +20,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:titleTextColor="@color/colorPrimary"/>
+        <Button
+                android:text="List"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/button"/>
+        <TextView
+                android:text="List of card views"
+                android:layout_width="match_parent"
+                android:layout_height="196dp" android:id="@+id/textView4"/>
 
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
             android:id="@+id/myRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:scrollbars="vertical"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:itemCount="40" tools:listitem="@layout/recycler_view_item"/>
+
+
 </android.support.design.widget.CoordinatorLayout>
