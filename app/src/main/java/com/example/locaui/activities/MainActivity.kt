@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import com.example.locaui.R
+import com.example.locaui.database.WebDB
 import com.example.locaui.main.MainApp
 import com.example.locaui.model.WebMarkModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,7 +19,9 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
 
     var webMark = WebMarkModel()
     var app: MainApp? = null
-    val webMarks = ArrayList<WebMarkModel>()
+    lateinit var db: WebDB
+    var webMarks: List<WebMarkModel> = ArrayList<WebMarkModel>()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +30,9 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
         app = application as MainApp
 
 
-        // val myTxt = findViewById<TextView>(R.id.textView1)
-        // myTxt.text = "   List of Websites is currently empty"
+        db = WebDB(this)
+
+        updateData()
 
 
         //Toast.makeText(this, "Entered to Add Websites", Toast.LENGTH_LONG).show();
@@ -48,6 +52,12 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
             }
+        }
+
+         private fun updateData() {
+            webMarks = db.findAll()!!
+            val adapter = WMAdapter(this, webMarks, webID, webTitle)
+
         }
 
         fun clickDelete(webMarks: WebMarkModel) {
