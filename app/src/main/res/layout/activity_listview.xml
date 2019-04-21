@@ -20,11 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:titleTextColor="@color/colorPrimary"/>
-        <Button
-                android:text="List"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnList"/>
+
         <TextView
                 android:text="Store your favorite web pages in webmark application"
                 android:layout_width="match_parent"

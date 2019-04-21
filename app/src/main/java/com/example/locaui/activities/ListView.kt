@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.*
 import com.example.locaui.main.MainApp
 import kotlinx.android.synthetic.main.activity_listview.*
-import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.startActivityForResult
 
@@ -25,9 +24,7 @@ class ListView : AppCompatActivity(), AnkoLogger {
         setSupportActionBar(toolbarMain)
         val layoutManager = LinearLayoutManager(this)
         myRecyclerView.layoutManager = layoutManager
-        myRecyclerView.adapter = WMAdapter(app.webMarks, webID, webTitle, urlScroll)
-
-
+        myRecyclerView.adapter = WMAdapter(app.webMarks)
 
     }
 

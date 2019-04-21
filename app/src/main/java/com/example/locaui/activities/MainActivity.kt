@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import com.example.locaui.R
 import com.example.locaui.database.WebDB
 import com.example.locaui.main.MainApp
@@ -17,47 +18,33 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity(), AnkoLogger {
 
 
-    var webMark = WebMarkModel()
-    var app: MainApp? = null
-    lateinit var db: WebDB
-    var webMarks: List<WebMarkModel> = ArrayList<WebMarkModel>()
+
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        app = application as MainApp
 
-
-        db = WebDB(this)
-
-        updateData()
 
 
         //Toast.makeText(this, "Entered to Add Websites", Toast.LENGTH_LONG).show();
         btnAdd.setOnClickListener {
-            if(webTitle.text!!.isEmpty()) {
-                webTitle.error = "Please enter some title"
-            }
-            if(urlScroll.text!!.isEmpty()) {
-                urlScroll.error = "Please enter any url"
-            }
-            webMark.webName = webTitle.text.toString()
-            webMark.webUrl = urlScroll.text.toString()
-            if (webMark.webName.isNotEmpty()) {
-                app!!.webMarks.add(webMark.copy())
-                info("Add Button pressed: $webTitle")
-                app!!.webMarks.forEach { info("Add button pressed: ${it}") }
-                setResult(AppCompatActivity.RESULT_OK)
-                finish()
-            }
+                    if (webTitle.text.toString().length > 0 &&
+                            urlScroll.text.toString().length > 0) {
+                            var webMarks = WebMarkModel(webTitle.text.toString(),webTitle.text.toString())
+                            var db = WebDB(this)
+                            db.createWM(webMarks)
+                    }else {
+                        Toast.makeText(this, "Please fill all data",Toast.LENGTH_SHORT)
+                    }
         }
 
-         private fun updateData() {
-            webMarks = db.findAll()!!
-            val adapter = WMAdapter(this, webMarks, webID, webTitle)
 
+
+        fun onClickEdit(webMark: WebMarkModel) {
+            /*RxBus.send(student)*/
+            startActivity(Intent(this, ListView::class.java).putExtra("webTtile", webMark.webName))
         }
 
         fun clickDelete(webMarks: WebMarkModel) {
@@ -73,24 +60,5 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
         }
 
     }
-
-}
-interface Store {
-    fun findAll(): List<WebMarkModel>
-    fun create(webmark: WebMarkModel)
-}
-class  MemStore : Store {
-
-
-    val webmarks = ArrayList<WebMarkModel>()
-
-    override fun findAll(): List<WebMarkModel> {
-        return webmarks
-    }
-
-    override fun create(webmark: WebMarkModel) {
-        webmarks.add(webmark)
-    }
-
 
 }
