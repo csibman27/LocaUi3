@@ -66,3 +66,22 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
     }
 
 }
+interface Store {
+    fun findAll(): List<WebMarkModel>
+    fun create(webmark: WebMarkModel)
+}
+class  MemStore : Store {
+
+
+    val webmarks = ArrayList<WebMarkModel>()
+
+    override fun findAll(): List<WebMarkModel> {
+        return webmarks
+    }
+
+    override fun create(webmark: WebMarkModel) {
+        webmarks.add(webmark)
+    }
+
+
+}

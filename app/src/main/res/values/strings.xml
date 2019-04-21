@@ -12,6 +12,7 @@
     <string name="refresh">Refresh</string>
     <string name="about">About</string>
     <string name="btnList">Read</string>
-
+    <string name="title_activity_edit">EditA</string>
+    <string name="addbtn2">Edit</string>
 
 </resources>

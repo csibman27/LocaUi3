@@ -74,27 +74,35 @@ class WMAdapter constructor(private var webMarks: ArrayList<WebMarkModel>) :
         holder.itemView.btnDeleteC.setOnClickListener {
             removeItem(position)
         }
+        var titleOld = holder.itemView.webTitle.text
+        var urlOld = holder.itemView.urlScroll.text
         holder.itemView.btnEditC.setOnClickListener {
            k->
-            val old = webmark.copy()
+            copyWebmarks(webmark)
             val intent = Intent(k.context, MainActivity::class.java)
-            intent.putExtra("webTitle", old.webName)
-            intent.putExtra("urlScroll", old.webUrl)
-            //val title = webmark.webName
-            //val url = webmark.webUrl
+            intent.putExtra("webTitle2", webmark.webName)
+            intent.putExtra("urlScroll2", webmark.webUrl)
             k.context.startActivity(intent)
 
 
 
             Log.d("t1", "message ${webmark} ")
             Log.d("t2", "message2 " + getItem(position))
+            Log.d("t3", "message: " + read())
 
 
         }
     }
+    fun copyWebmarks(webmark: WebMarkModel): WebMarkModel {
+        val result = WebMarkModel()
+        result.webName = webmark.webName
+        result.webUrl = webmark.webUrl
 
-    private fun saveData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return result
+    }
+
+    private fun read(): ArrayList<WebMarkModel> {
+        return webMarks
     }
 
     fun getItem(position: Int): WebMarkModel {
